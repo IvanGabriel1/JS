@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios basicos de JS</title>
+</head>
+
+<body>
+  <h1>Ejercicios de JS Curso JonMircha</h1>
+  <script>
+    /*
+    Video 34:
+    1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola". (Ir a mozila developer)
+    3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+    4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    */
+
+    // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    let ejNumero1 = "Hola Mundo";
+
+    function miFuncion() {
+      console.log(ejNumero1.length);
+    }
+
+    miFuncion(); //sale "10"
+
+    //Rta:
+    /*
+    Evitar hacerlo con funciones declaradas, pero aca estaria la solucion con funcion declarada:
+*/
+    function contarCaracteres2(cadena = "") {
+      if (!cadena) {
+        console.warn("No ingresaste ninguna cadena");
+      } else {
+        console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres`);
+      }
+    }
+
+    contarCaracteres2("");
+    contarCaracteres2("Hola mundo");
+    /*   
+       Se ve con mejores ojos las cadenas expresadas, y con las cadenas expresadas y con arrow functions podemos resolver el ejercicio en una sola linea de codigo y se va a ver de forma elegante:
+       */
+
+    const contarCaracteres = (cadena = "") =>
+      (!cadena)
+        ? console.warn("No ingresaste ninguna cadena")
+        : console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres`);
+
+    contarCaracteres();
+    contarCaracteres("Hola mundo");
+
+
+    //Operador ternario:
+    //(!cadena) = "Si no existe la cadena"
+    //? :    = ? caso verdadero : caso falso
+    //-------------------------------------------------------------------------
+
+    //2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe.miFuncion("Hola Mundo", 4) devolverá "Hola". (Ir a mozila developer)
+    //El substring() método devuelve un subconjunto de un objeto String.
+
+    let ejNumero2 = "Hola Mundo";
+
+    function miFuncion2() {
+      console.log(ejNumero1.substring(0, 5));
+    }
+
+    miFuncion2(); //sale "Hola"
+
+    /*
+    Rta:
+    */
+    const recortarTexto = (cadena = "", longitud = undefined) =>
+      (!cadena)
+        ? console.warn("No ingresaste una cadena de texto")
+        : (longitud === undefined)
+          ? console.warn("No ingresaste la longuitud para recortar el texto")
+          : console.info(cadena.slice(0, longitud))
+
+    recortarTexto("Hola Mundo", 4);
+    recortarTexto();
+    recortarTexto("Hola Hola");
+    recortarTexto("", 5);
+
+
+    // 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.miFuncion('hola que tal', ' ') devolverá['hola', 'que', 'tal'].
+
+    //3: El método split() divide un objeto de tipo String en un array (vector) de cadenas mediante la separación de la cadena en subcadenas. (Lo usamos en el renglon 190 del archivo "basicos").
+    let dsad = "Hola Mundo mundial de los mundos del mundo";
+
+    function miFuncion3() {
+      console.log(dsad.split(" "));
+    }
+
+    miFuncion3(); // sale: (8) ['Hola', 'Mundo', 'mundial', 'de', 'los', 'mundos', 'del', 'mundo']
+
+    const ejNumero3 = (cadena3) =>
+      (!cadena3)
+        ? console.warn("No ingresaste una cadena")
+        : console.info(cadena3.split(" "))
+
+    ejNumero3("Hola mundo lindo divino de mi corazaaawn");
+    ejNumero3("");
+
+    //RTA:
+
+    const cadenaAArreglo = (cadena = "", separador = undefined) =>
+      (!cadena)
+        ? console.warn("No ingresaste una cadena de texto")
+        : (separador === undefined)
+          ? console.warn("No ingresaste el caracter separador")
+          : console.info(cadena.split(separador));
+
+    cadenaAArreglo("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque enim aliquam doloribus omnis delectus saepe quidem optio unde. Delectus maiores minus hic cumque quo corporis exercitationem quae dolorem, eveniet officiis!", " ");
+    cadenaAArreglo("Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic", ",");
+    cadenaAArreglo();
+    cadenaAArreglo("Hola mundo");
+    cadenaAArreglo("", "-");
+
+
+    // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    //4:El método repeat() construye y devuelve una nueva cadena que contiene el número especificado de copias de la cadena en la cual fue llamada, concatenados.
+
+    const ejNumeroCuatro = (cadenaCuatro = "", repeticion = undefined) =>
+      (!cadenaCuatro)
+        ? console.warn("No ingresaste una cadena de texto")
+        : (repeticion === undefined)
+          ? console.warn("No ingresaste la cantidad de repeticiones")
+          : console.info(cadenaCuatro.repeat(repeticion));
+
+    ejNumeroCuatro();
+    ejNumeroCuatro("HOLAAAA ", 3);
+    ejNumeroCuatro("", 3);
+    ejNumeroCuatro("HOLI");
+
+
+    //Rta:
+    //(console.log(Math.sign(-7.8)); // Indica si el numero es positivo, negativo o 0.)
+
+    const repetirTexto = (texto = "", veces = undefined) => {
+      if (!texto) return console.warn("No ingresaste un texto");
+
+      if (veces === undefined) return console.warn("No ingresaste el numero de veces a repetir el texto");
+
+      if (veces === 0) return console.error("El numero de veces no puede ser 0");
+
+      if (Math.sign(veces) === -1) return console.error("El numero de veces no puede ser negativo");
+
+      for (let i = 1; i <= veces; i++) console.info(`${texto}, ${i}`);
+    }
+
+    repetirTexto("Hola mundo", 3);
+    repetirTexto("Hola mundo", 0);
+    repetirTexto("Hola mundo", -20);
+    repetirTexto("", 3);
+    repetirTexto("Hola mundo");
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /*
+    5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+    6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+    7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+    8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+    */
+
+  </script>
+</body>
+
+</html>

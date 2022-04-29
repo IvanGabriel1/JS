@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulos en JavaScript</title>
+</head>
+
+<body>
+  <h1>Modulos en JavaScript</h1>
+  <!--Los modulos se mandan a llamar justo antes de cerrar el body.-->
+  <script src="modulos.js" type="module"></script>
+  <!--El ponerle el type="module" nos permite importar y exportar de otros archivos -->
+  <script src="nomodulos.js" nomodule></script>
+  <!--nomodule es un atributo buleano, al ponerlo hace compatible el codigo con exploradores viejos como el internet explorer. Y si no lo ponemos se ejecutaria 2 veces en este caso.-->
+</body>
+
+</html>
